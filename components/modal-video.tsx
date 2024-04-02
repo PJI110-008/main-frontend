@@ -78,10 +78,11 @@ export default function ModalVideo({
           >
             <div className="max-w-6xl mx-auto h-full flex items-center">
               <Dialog.Panel className="w-full max-h-full aspect-video bg-black overflow-hidden">
-                <video ref={videoRef} width={videoWidth} height={videoHeight} loop controls>
+                {/* <video ref={videoRef} width={videoWidth} height={videoHeight} loop controls>
                   <source src={video} type="video/mp4" />
                   Your browser does not support the video tag.
-                </video>
+                </video> */}
+                <iframe width="1100" height="580" src="https://www.youtube.com/embed/uHYuDDHvU64?si=2YWq90oUbo8mK1Bj" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
               </Dialog.Panel>
             </div>
           </Transition.Child>
