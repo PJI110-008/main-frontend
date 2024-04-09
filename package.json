@@ -14,9 +14,11 @@
     "@types/react": "^18.2.42",
     "@types/react-dom": "^18.2.17",
     "aos": "^3.0.0-beta.6",
+    "apexcharts": "^3.48.0",
     "axios": "^1.6.8",
     "next": "^14.0.4",
     "react": "18.2.0",
+    "react-apexcharts": "^1.4.1",
     "react-brazil-map": "^1.0.1",
     "react-dom": "18.2.0",
     "typescript": "^5.3.3"
