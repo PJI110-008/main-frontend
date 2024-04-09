@@ -2,10 +2,9 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { MapBrazil } from 'react-brazil-map'
-import { StringLiteral } from "typescript"
 import DonutChart from "./DonutChart"
 
-const regionPerState = {
+const regionPerState: any = {
     // Norte
     'AM': 'Norte',
     'RR': 'Norte',
