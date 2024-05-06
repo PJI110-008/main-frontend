@@ -11,6 +11,7 @@ export default function DonutChart(props: { state: { options: ApexCharts.ApexOpt
                 series={props.state.series ||  [44, 55, 41, 17, 15]}
                 type="donut"
                 width="380"
+                height='380'
             />
         </div>
     );
