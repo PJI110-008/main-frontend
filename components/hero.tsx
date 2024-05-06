@@ -1,7 +1,21 @@
+'use client'
 import VideoThumb from '@/public/images/hero-image-01.jpg'
 import ModalVideo from '@/components/modal-video'
 
 export default function Hero() {
+  
+  const scrollToMainCharts = () => scrollTo('main-charts')
+  const scrollToKnowMore = () => scrollTo('know-more')
+
+  const scrollTo = (divId: string) => {
+    const target = document.getElementById(divId)
+    if (target) {
+      target.scrollIntoView({
+        behavior:'smooth'
+      })
+    }
+  }
+
   return (
     <section>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 relative">
@@ -32,11 +46,11 @@ export default function Hero() {
             </p>
             <div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center">
               <div data-aos="fade-up" data-aos-delay="400">
-                <a className="btn text-white bg-purple-600 hover:bg-purple-700 w-full mb-4 sm:w-auto sm:mb-0" href="#0">
+                <a onClick={scrollToMainCharts} className="btn text-white bg-purple-600 hover:bg-purple-700 w-full mb-4 sm:w-auto sm:mb-0" href="#0">
                   Ver dados
                 </a>
               </div>
-              <div data-aos="fade-up" data-aos-delay="600">
+              <div onClick={scrollToKnowMore} data-aos="fade-up" data-aos-delay="600">
                 <a className="btn text-white bg-gray-700 hover:bg-gray-800 w-full sm:w-auto sm:ml-4" href="#0">
                   Entenda mais
                 </a>
