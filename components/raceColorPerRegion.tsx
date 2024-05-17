@@ -45,9 +45,9 @@ const regionPerState: any = {
 
 interface CorRacaData {
     id: number
-    Cor_ou_raca: string
-    Grande_Regiao: string
-    Porcentagem: number
+    cor_ou_raca: string
+    grande_regiao: string
+    porcentagem: number
 }
 
 interface MappedCorRacaData {
@@ -81,17 +81,17 @@ export default function RaceColorPerRegion() {
     const fetchData = async () => {
         const apiURL = process.env.NEXT_PUBLIC_API_URL
         const { data } = await axios.get<CorRacaData[]>(apiURL!)
-        const regionKeys = [...new Set(data.map(e => e.Grande_Regiao))]
+        const regionKeys = [...new Set(data.map(e => e.grande_regiao))]
         const mappedData: MappedData = {}
 
         regionKeys.forEach(region => mappedData[region] = [])
 
         data.reverse().forEach((value) => {
-            const mappedRegionRaca = mappedData[value.Grande_Regiao].find((region) => region.corRaca === value.Cor_ou_raca)
+            const mappedRegionRaca = mappedData[value.grande_regiao].find((region) => region.corRaca === value.cor_ou_raca)
             if (!mappedRegionRaca) {
-                mappedData[value.Grande_Regiao].push({
-                    corRaca: value.Cor_ou_raca,
-                    percentage: value.Porcentagem
+                mappedData[value.grande_regiao].push({
+                    corRaca: value.cor_ou_raca,
+                    percentage: value.porcentagem
                 })
             }
         })
