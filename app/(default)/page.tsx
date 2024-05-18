@@ -6,6 +6,7 @@ export const metadata = {
 import Hero from '@/components/hero'
 import Features from '@/components/features'
 import RaceColorPerRegion from '@/components/raceColorPerRegion'
+import PcdIncome from '@/components/pcdIncome'
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       <Hero />
       <Features />
       <RaceColorPerRegion />
+      <PcdIncome />
     </>
   )
 }

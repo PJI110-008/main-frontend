@@ -51,10 +51,10 @@ export default function RaceColorPerRegion() {
                 {/* Section header */}
                 <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">
                     <h2 className="h2 mb-4">
-                        Classificação por Região { selectedData ? `(${regionPerState[district]})` : '' }
+                        Proporção Étnica por Região { selectedData ? `(${regionPerState[district]})` : '' }
                     </h2>
                     <p className="text-xl text-gray-400">
-                        Veja abaixo as classificações realizadas por região brasileira, baseado nos dados do IBGE. Selecione o estado e veja os dados correspondente à região.
+                        O gráfico abaixo ilustra a distribuição étnica nas diferentes regiões do Brasil, de acordo com dados do IBGE. Selecione um estado para visualizar os dados específicos da região correspondente.
                     </p>
                 </div>
                 <div className="max-w-sm mx-auto grid gap-8 md:grid-cols-1 lg:grid-cols-2 lg:gap-16 items-start md:max-w-2xl lg:max-w-none" data-aos-id-blocks>
