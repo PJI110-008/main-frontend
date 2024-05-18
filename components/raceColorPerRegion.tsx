@@ -1,67 +1,14 @@
 'use client'
-import axios from "axios"
 import { useEffect, useState } from "react"
 import { MapBrazil } from 'react-brazil-map'
 import DonutChart from "./DonutChart"
-
-const regionPerState: any = {
-    // Norte
-    'AM': 'Norte',
-    'RR': 'Norte',
-    'AP': 'Norte',
-    'PA': 'Norte',
-    'TO': 'Norte',
-    'RO': 'Norte',
-    'AC': 'Norte',
-
-    // Nordeste
-    'MA': 'Nordeste',
-    'PI': 'Nordeste',
-    'CE': 'Nordeste',
-    'RN': 'Nordeste',
-    'PE': 'Nordeste',
-    'PB': 'Nordeste',
-    'SE': 'Nordeste',
-    'AL': 'Nordeste',
-    'BA': 'Nordeste',
-
-    // Centro-Oeste
-    'MT': 'Centro-Oeste',
-    'MS': 'Centro-Oeste',
-    'GO': 'Centro-Oeste',
-    'DF': 'Centro-Oeste',
-
-    // Sudeste
-    'SP': 'Sudeste',
-    'RJ': 'Sudeste',
-    'ES': 'Sudeste',
-    'MG': 'Sudeste',
-
-    // Sul
-    'PR': 'Sul',
-    'RS': 'Sul',
-    'SC': 'Sul',
-}
-
-interface CorRacaData {
-    id: number
-    cor_ou_raca: string
-    grande_regiao: string
-    porcentagem: number
-}
-
-interface MappedCorRacaData {
-    corRaca: string
-    percentage: number
-}
-
-interface MappedData {
-    [key: string]: MappedCorRacaData[]
-}
+import { getRaceColorPerRegion } from "@/services/api"
+import { MappedCorRacaData, MappedRaceColorData } from "@/interfaces/RaceColor.interface"
+import { regionPerState } from "@/data/regionsPerState.data"
 
 export default function RaceColorPerRegion() {
     const [district, setDistrict] = useState('')
-    const [apiData, setApiData] = useState<MappedData>()
+    const [apiData, setApiData] = useState<MappedRaceColorData>()
     const [selectedData, setSelectedData] = useState<MappedCorRacaData[]>()
 
     useEffect(() => {
@@ -79,10 +26,9 @@ export default function RaceColorPerRegion() {
     }
 
     const fetchData = async () => {
-        const apiURL = process.env.NEXT_PUBLIC_API_URL
-        const { data } = await axios.get<CorRacaData[]>(apiURL!)
+        const data = await getRaceColorPerRegion()
         const regionKeys = [...new Set(data.map(e => e.grande_regiao))]
-        const mappedData: MappedData = {}
+        const mappedData: MappedRaceColorData = {}
 
         regionKeys.forEach(region => mappedData[region] = [])
 
