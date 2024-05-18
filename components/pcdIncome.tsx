@@ -3,6 +3,7 @@ import { getPcdIncome } from "@/services/api"
 import { useEffect, useState } from "react"
 import { MappedPcdIncomeInterface } from "@/interfaces/PcdIncome.interface"
 import ColumnChart from "./ColumnChart"
+import FonteDeDados from "./FonteDeDados"
 
 export default function PcdIncome() {
 
@@ -93,7 +94,7 @@ export default function PcdIncome() {
                     <p className="text-xl text-gray-400">
                         - <strong>Selecione Sexo</strong>: Escolha entre masculino e feminino para ver as diferenças salariais entre pessoas com e sem deficiência.
                         <br />
-                        - <strong>Selecione Deficiência</strong>: Escolha entre pessoas com ou sem deficiência para ver as diferenças salariais entre homens e mulheres dentro dessa categoria.
+                        - <strong>Selecione Etnia</strong>: Escolha entre as etnias para ver as diferenças salariais entre pessoas de diferentes etnias.
                     </p>
                 </div>
 
@@ -151,6 +152,7 @@ export default function PcdIncome() {
                     </div>
                 </div>
             </div>
+            <FonteDeDados fonte={'IBGE'} url={'https://agenciadenoticias.ibge.gov.br/agencia-detalhe-de-midia.html?view=mediaibge&catid=2103&id=6478'} />
         </section>
     )
 }
