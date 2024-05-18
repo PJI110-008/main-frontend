@@ -7,7 +7,6 @@ import ColumnChart from "./ColumnChart"
 export default function PcdIncome() {
 
     const [PCDData, setPCDData] = useState<MappedPcdIncomeInterface[]>()
-    const [selectedData, setSelectedData] = useState<any>()
     const [dataForChart, setDataForChart] = useState<any>()
 
     const [etnias, setEtnias] = useState<string[]>()
@@ -67,6 +66,15 @@ export default function PcdIncome() {
                     })
                 }
             }
+            if (e.etnia === selectedEthnicity) {
+                const foundIndex = series.findIndex(s => s.name === e.genero)
+                if (foundIndex === -1 && e.etnia) {
+                    series.push({
+                        name: e.genero,
+                        data: [e.pessoa_com_deficiencia, e.pessoa_sem_deficiencia]
+                    })
+                }
+            }
         })
         setDataForChart({ categories, series })
     }
@@ -90,22 +98,38 @@ export default function PcdIncome() {
                 </div>
 
                 <div className="max-w-sm mx-auto grid gap-8 md:grid-cols-1 lg:grid-cols-2 lg:gap-16 items-start md:max-w-2xl lg:max-w-none" data-aos-id-blocks>
-                    <div className='sm:flex sm:justify-center' data-aos="fade-up" data-aos-anchor="[data-aos-id-blocks]">
-                    <div className="my-4">
-                        <label htmlFor="gender-select" className="block text-lg text-gray-200">
-                        Selecione o Gênero:
-                        </label>
-                        <select
-                            id="gender-select"
-                            value={selectedGender}
-                            onChange={handleGenderChange}
-                            className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md bg-gray-700 text-white"
-                        >
-                        <option value="">Escolha um gênero</option>
-                            <option value="Masculino">Masculino</option>
-                            <option value="Feminino">Feminino</option>
-                        </select>
-                    </div>
+                    <div className="lg:ml-32" data-aos="fade-up" data-aos-anchor="[data-aos-id-blocks]">
+                        {/* GENDER SELECTION */}
+                        <div className="my-4">
+                            <label htmlFor="gender-select" className="block text-lg text-gray-200">
+                            Selecione o Gênero:
+                            </label>
+                            <select
+                                id="gender-select"
+                                value={selectedGender}
+                                onChange={handleGenderChange}
+                                className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md bg-gray-700 text-white"
+                            >
+                                <option disabled value="">Escolha um gênero</option>
+                                <option value="Masculino">Masculino</option>
+                                <option value="Feminino">Feminino</option>
+                            </select>
+                        </div>
+                        {/* ETNIA SELECION */}
+                        <div className="my-4">
+                            <label htmlFor="ethnicity-select" className="block text-lg text-gray-200">
+                                Selecione a Etnia:
+                            </label>
+                            <select
+                                id="ethnicity-select"
+                                value={selectedEthnicity}
+                                onChange={handleEthnicityChange}
+                                className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md bg-gray-700 text-white"
+                            >
+                                <option disabled value="">Escolha uma etnia</option>
+                                {etnias && etnias.map(etnia => <option key = {etnia} value={etnia}>{etnia}</option>)}
+                            </select>
+                        </div>
                     </div>
                     <div className='sm:flex sm:justify-center' data-aos="fade-up" data-aos-anchor="[data-aos-id-blocks]">
                         {

@@ -67,10 +67,6 @@ export default function RaceColorPerRegion() {
                                 <DonutChart state={{
                                     options: {
                                         labels: selectedData!.map(e => e.corRaca),
-                                        // markers: {
-                                            // colors: ['#fff']
-                                            
-                                        // }
                                     },
                                     series: selectedData!.map(e => e.percentage)
                                 }} />
